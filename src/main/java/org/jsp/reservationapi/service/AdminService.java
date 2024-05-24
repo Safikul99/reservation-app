@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.jsp.reservationapi.dao.AdminDao;
 import org.jsp.reservationapi.dto.ResponceStructure;
+import org.jsp.reservationapi.exception.AdminNotFoundException;
 import org.jsp.reservationapi.model.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -43,7 +44,7 @@ public class AdminService
 			return ResponseEntity.status(HttpStatus.ACCEPTED).body(structure);
 			
 		}
-		return null;
+		throw new AdminNotFoundException("Cannot Updare Admin as Id is Invalid");
 		
 	}
 	public ResponseEntity<ResponceStructure<Admin>>findById(int id)
@@ -57,7 +58,7 @@ public class AdminService
 			structure.setStatusCode(HttpStatus.OK.value());
 			return ResponseEntity.status(HttpStatus.OK).body(structure);
 		}
-		return null;
+		throw new AdminNotFoundException("Invalid Admin Id");
 	}
 	public ResponseEntity<ResponceStructure<Admin>>verify(long phone,String password)
 	{
@@ -72,7 +73,7 @@ public class AdminService
 			
 			
 		}
-		return null;
+		throw new AdminNotFoundException("Invalid Phone number or Password");
 	}
 	public ResponseEntity<ResponceStructure<Admin>>verify(String email,String password)
 	{
@@ -87,7 +88,7 @@ public class AdminService
 			
 			
 		}
-		return null;
+		throw new AdminNotFoundException("Invalid Email Id or password");
 	}
 	public ResponseEntity<ResponceStructure<String>> delete(int id)
 	{
@@ -104,7 +105,7 @@ public class AdminService
 			
 			
 		}
-		return null;
+		throw new AdminNotFoundException("Cannot delete Admin ad Id is Invalid");
 	}
 	
 	
