@@ -24,12 +24,7 @@ const  AdminSingUp= () => {
             <label htmlFor="">password</label>
             <input type="text" required placeholder="Enter the Password" value={password} onChange={(e)=>setpassword(e.target.value)} />
        <button className="btn btn-primary">submit</button>
-            
-
-
-
-
-          </form>
+            </form>
         </div>
      );
 }
